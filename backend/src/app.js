@@ -1,5 +1,6 @@
 const express = require('express'); // Importar Express
 const cors = require('cors');
+const { errors } = require('celebrate');
 const routes = require('./routes'); // ./ serve para referenciar o arquivo na mesma pasta
 
 
@@ -8,8 +9,10 @@ const app = express(); // instanciar aplicação
 app.use(cors()); // determina quem pode acessar a API
 app.use(express.json()); // Converte body das requisições em json
 app.use(routes); 
+app.use(errors());
 
-app.listen(3333); // Escutar na porta 3333
+
+module.exports = app;
 
 /**
  *Rota / Recurso
